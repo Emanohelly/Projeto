@@ -1,77 +1,43 @@
-import { Text, View, TouchableOpacity, FlatList } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 
 import { AppNavigatorRoutesProps } from "../../routes/app.routes";
 
 import { styles } from "./styles";
 import HomeHeader from "../../components/HomeHeader";
-import Group from "../../components/Group";
-import FuncionarioCard from "../../components/FuncionarioCard";
+
+import AntDesign from '@expo/vector-icons/AntDesign';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function Home() {
-  const [deptFuncionario, setDeptFuncionario] = useState([
-    "Design UI/UX",
-    "DevOps",
-    "Front-End",
-    "Back-End",
-    "Gerência",
-  ]);
-
-  const [nomeFuncionario, setNomeFuncionario] = useState([
-    "Don Gordon",
-    "John Steven Doe",
-    "Barry Jhayson",
-    "Tiwa Cavage",
-    "James Williams",
-    "Sarah Wilson ",
-  ]);
-
-  const [deptFuncionarioSelected, setDeptFuncionarioSelected] =
-    useState("Design UI/UX");
 
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
-  function handleOpenFuncionarioDetails() {
-    navigation.navigate("funcionario");
+  function handleOpenFuncionarioPage() {
+    navigation.navigate("funcionarios");
   }
+
+  // function handleOpenAdicionarFuncionarioPage() {
+  //   navigation.navigate("cadastroFuncionario");
+  // }
 
   return (
     <>
       <View style={styles.container}>
         <HomeHeader />
-        <FlatList
-          data={deptFuncionario}
-          keyExtractor={(item) => item}
-          renderItem={({ item }) => (
-            <Group
-              name={item}
-              isActive={deptFuncionarioSelected === item}
-              onPress={() => setDeptFuncionarioSelected(item)}
-            />
-          )}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-          style={{
-            marginTop: 20,
-            marginBottom: 10,
-            maxHeight: 44,
-            minHeight: 44,
-          }}
-        />
-
         <View style={styles.containerColuna}>
-          <Text style={styles.textoTitulo1}>Funcionários</Text>
-          <FlatList
-            data={nomeFuncionario}
-            keyExtractor={(item) => item}
-            renderItem={({ item }) => (
-              <FuncionarioCard onPress={handleOpenFuncionarioDetails} />
-            )}
-            showsVerticalScrollIndicator={false}
-          />
+          <TouchableOpacity style={styles.botaoHome} onPress={handleOpenFuncionarioPage} >
+            <FontAwesome name="group" size={75} color="#082777" />
+            <Text style={styles.textoTitulo1}>Visualizar Funcionários</Text>
+          </TouchableOpacity>
         </View>
+        <View style={styles.containerColuna}>
+          <TouchableOpacity style={styles.botaoHome} /* onPress={handleOpenAdicionarFuncionarioPage} */ >
+            <AntDesign name="adduser" size={75} color="#082777" />
+            <Text style={styles.textoTitulo1}>Adicionar Funcionário</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     </>
   );

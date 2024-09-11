@@ -9,6 +9,8 @@ export default function Cadastrar({
   setUsuario,
   senha,
   setSenha,
+  confirmarSenha,
+  setConfirmarSenha,
   senhaVisivel,
   setSenhaVisivel,
   senhaConfirmarVisivel,
@@ -16,20 +18,20 @@ export default function Cadastrar({
 }) {
   return (
     <View style={styles.campoEntrada}>
+
+      {/* NOME */}
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputEmail}
           placeholder="Nome"
           placeholderTextColor="#4B93E7"
+          onChangeText={setNomeUsuario}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.inputEmail}
-          placeholder="Sobrenome"
-          placeholderTextColor="#4B93E7"
-        />
-      </View>
+
+      {/* EMAIL */}
+
       <View style={styles.inputContainer}>
         <TextInput
           inputMode="email"
@@ -41,7 +43,8 @@ export default function Cadastrar({
         />
       </View>
 
-      {/* ############# SENHA ############# */}
+      {/* SENHA */}
+
       <View style={styles.inputContainer}>
         <TextInput
           keyboardType="default"
@@ -62,7 +65,7 @@ export default function Cadastrar({
         </TouchableOpacity>
       </View>
 
-      {/* Campo de confirmação de senha */}
+      {/* CONFIRMAR SENHA */}
       <View style={styles.inputContainer}>
         <TextInput
           keyboardType="default"
@@ -70,6 +73,7 @@ export default function Cadastrar({
           placeholder="Confirmar Senha"
           placeholderTextColor="#4B93E7"
           secureTextEntry={!senhaConfirmarVisivel}
+          onChangeText={setConfirmarSenha}
         />
         <TouchableOpacity
           onPress={() => setConfirmarSenhaVisivel(!senhaConfirmarVisivel)}>

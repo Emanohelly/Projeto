@@ -8,8 +8,8 @@ export function Routes() {
 
   return (
     <NavigationContainer theme={theme}>
-      <AuthRoutes />
-      {/*<AppRoutes />*/}
+      {/* <AuthRoutes /> */}
+      <AppRoutes />
     </NavigationContainer>
   );
 }

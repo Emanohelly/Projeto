@@ -19,11 +19,23 @@ export default function SignUp() {
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
+    const [confirmarSenha, setConfirmarSenha] = useState('');
     const [senhaVisivel, setSenhaVisivel] = useState(false);
     const [senhaConfirmarVisivel, setConfirmarSenhaVisivel] = useState(false);
     const [carregando, setCarregando] = useState(false);
     const [resultado, setResultado] = useState('');
     const [autenticado, setAutenticado] = useState(true);
+
+
+    const handleCadastrar = () => {
+        /* Teste */
+        console.log({
+            nomeUsuario,
+            usuario,
+            senha,
+            confirmarSenha,
+        })
+    }
 
     return (
         <>
@@ -50,6 +62,8 @@ export default function SignUp() {
                         setUsuario={setUsuario}
                         senha={senha}
                         setSenha={setSenha}
+                        confirmarSenha={confirmarSenha}
+                        setConfirmarSenha={setConfirmarSenha}
                         senhaVisivel={senhaVisivel}
                         setSenhaVisivel={setSenhaVisivel}
                         senhaConfirmarVisivel={senhaConfirmarVisivel}
@@ -66,7 +80,7 @@ export default function SignUp() {
                         <View style={styles.horizontalLine} />
                     </View>
                     {/*Botão Cadastrar*/}
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handleCadastrar}>
                         <View style={styles.buttonEntrar}>
                             <Text style={styles.textButton}>Cadastrar</Text>
                         </View>

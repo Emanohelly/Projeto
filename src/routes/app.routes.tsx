@@ -9,10 +9,13 @@ import FolhaDePonto from "../screens/FolhaDePonto/index";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Funcionario from "../screens/Funcionario";
+import Funcionarios from "../screens/Funcionarios";
 
 type AppRoutes = {
   home: undefined;
+  funcionarios: undefined;
   profile: undefined;
   folhaDePonto: undefined;
   funcionario: undefined;
@@ -44,6 +47,15 @@ export function AppRoutes() {
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name="home" size={24} color={color} />
+          ),
+        }}
+      />
+      <Screen
+        name="funcionarios"
+        component={Funcionarios}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="group" size={24} color={color} />
           ),
         }}
       />
